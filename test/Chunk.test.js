@@ -154,7 +154,8 @@ describe("Chunk", () => {
 		});
 		describe("and the chunk does contain this module", function() {
 			beforeEach(function() {
-				ChunkInstance.parents = [chunk];
+				ChunkInstance.getParents().clear();
+				ChunkInstance.addParent(chunk);
 			});
 			it("calls module.removeChunk with itself and returns true", function() {
 				ChunkInstance.removeParent(chunk).should.eql(true);
